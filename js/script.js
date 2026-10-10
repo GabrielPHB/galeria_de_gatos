@@ -25,8 +25,12 @@ fetch("https://api.thecatapi.com/v1/breeds", {
         if (data.image !== undefined) {
             image.src = (data.image.url);
             } else {
-                image.textContent = `Imagem Indisponível`;
+                image.src = ("/img/unavailable.jfif");
             }
+        image.onerror = () => {
+            image.onerror = null
+            image.src = "/img/unavailable.jfif";
+            };
         });
         console.log(data);
     })
