@@ -57,10 +57,30 @@ function openModal(data) {
 
     backImage.src = ("/img/back.svg");
 
-    catName.textContent = `Raça: ${data.name}`;
-    catOrigin.textContent = `País de Origem: ${data.origin}`;
-    catDescri.textContent = `Descrição: ${data.description}`;
-    catTemp.textContent = `Temperamento: ${data.temperament}`;
+    if (!data.name) {
+        catName.textContent = "Raça: Não informada";
+    } else {
+        catName.textContent = `Raça: ${data.name}`;
+    }
+    
+
+    if (!data.origin) {
+        catOrigin.textContent = "Origem: Não informada";
+    } else {
+        catOrigin.textContent = `Origem: ${data.origin}`;
+    }
+    
+    if(!data.description) {
+        catDescri.textContent = "Descrição: Não informada";
+    } else {
+        catDescri.textContent = `Descrição: ${data.description}`;
+    }
+
+    if(!data.temperament) {
+        catTemp.textContent = "Temperamento: Não informado";
+    } else {
+        catTemp.textContent = `Temperamento: ${data.temperament}`;
+    }
 
     if (!data.life_span) {
         catExpect.textContent = "Expectativa de Vida: Indefinida";
