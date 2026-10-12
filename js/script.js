@@ -13,17 +13,20 @@ fetch("https://api.thecatapi.com/v1/breeds", {
     .then(data => {
         data.forEach(data => {
         const card = document.createElement("div");
+        const imageBoard = document.createElement("div");
         const image = document.createElement("img");
         const name = document.createElement("p");
         const origin = document.createElement("p");
 
         galery.appendChild(card);
-        card.appendChild(image);
+        card.appendChild(imageBoard);
+        imageBoard.appendChild(image);
         card.appendChild(name);
         card.appendChild(origin);
 
         card.className = "border-2 border-[#EADCD3] rounded-lg bg-[#FFFFFF]";
-        image.className = "object-cover h-96 w-full";
+        imageBoard.className = "w-full aspect-square border rounded-lg overflow-hidden";
+        image.className = "w-full h-full object-fill";
         name.className = "font-lilita text-[#3D2A25] px-2 text-2xl py-2";
         origin.className = " font-lilita text-[#3D2A25] px-2 text-2xl";
         name.textContent = `Raça: ${data.name}`;
