@@ -1,5 +1,5 @@
 
-const apiKey = "live_UXCKt5uaz79OsfIAEWSfONnVeZU13Fh7WNf6nMiGsxHVKZVMeUl3pZIOz6gn2ZRP";
+const apiKey = "";
 const galery = document.getElementById("galery");
 const searchInput = document.getElementById("searchInput");
 
