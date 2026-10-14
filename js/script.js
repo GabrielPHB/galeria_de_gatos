@@ -1,5 +1,7 @@
+
 const apiKey = "live_UXCKt5uaz79OsfIAEWSfONnVeZU13Fh7WNf6nMiGsxHVKZVMeUl3pZIOz6gn2ZRP";
 const galery = document.getElementById("galery");
+const searchInput = document.getElementById("searchInput");
 
 function openModal(data) {
     const modalBlur = document.createElement("div");
@@ -115,6 +117,8 @@ fetch("https://api.thecatapi.com/v1/breeds", {
         const origin = document.createElement("p");
         const plus = document.createElement("button");
 
+        card.dataset.name = data.name.toLowerCase();
+
         galery.appendChild(card);
         card.appendChild(imageBoard);
         imageBoard.appendChild(image);
@@ -165,3 +169,28 @@ fetch("https://api.thecatapi.com/v1/breeds", {
         console.log("Erro ao processar informação:", error);
     })
 
+searchInput.addEventListener("input", () => {
+    const searchText = searchInput.value.toLowerCase().trim();
+    const cards = galery.children;
+    let visibleCards = 0;
+    for(const card of cards) {
+        if (card.dataset.name.includes(searchText)) {
+            card.style.display = "";
+            visibleCards++;
+    } else {
+        card.style.display = "none";
+}
+    }
+
+    if (visibleCards === 0) {
+    noResults.style.display = "block";
+    } else {
+    noResults.style.display = "none";
+    }
+});
+
+const noResults = document.createElement("h2");
+noResults.textContent = "Nenhuma raça encontrada.";
+noResults.className = "font-lilita text-center text-3xl py-6 text-[#3D2A25]";
+noResults.style.display = "none";
+galery.parentElement.appendChild(noResults);
